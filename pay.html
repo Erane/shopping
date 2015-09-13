@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>支付页面</title>
+    <link type="text/css" href="css/pay.css" rel="stylesheet">
+    <link type="text/css" href="icon/iconfont.css" rel="stylesheet">
+    <script src="js/address.js"></script>
+</head>
+<body>
+<!---公共部分--->
+<div id="head">
+    <div class="size">
+        <header>好吃</header>
+        <div class="nav nav-l">
+            <a href="index.html" class="home">
+                首页
+                <span class="color"></span>
+            </a>
+            <a href="javascript:;" class="cake">
+                蛋糕
+                <span class="color"></span>
+            </a>
+            <div class="nav-r">
+                <a href="javascript:;" class="sign-in">
+                    登录
+                </a>
+                <a href="javascript:;" class="order">
+                    订单
+                </a>
+                <a href="javascript:;" class="shopping">
+                    <i class="iconfont">&#x3562</i>
+                    购物车
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!---公共部分--->
+
+<div id="pay">
+    <div id="pay-body">
+        <div class="pay-title">
+            <h4>订单信息</h4>
+        </div>
+        <div class="msg">
+            <div class="msg-title1">商品</div>
+            <div class="msg-title2">单价</div>
+            <div class="msg-title3">数量</div>
+            <div class="msg-title4">小计</div>
+        </div>
+        <div class="list-line"></div>
+
+        <div class="goods">
+            <div class="No-commodity hide">
+                购物车空空的,赶紧填饱她吧!
+            </div>
+            <ul class="goods-list">
+                <li class="goods-inf">
+                    <a href="#">
+                        <span class="goods-imgs">
+                            <img src="image/cat-little.jpg">
+                        </span>
+                        <span class="goods-name">猫爪蛋糕</span>
+                    </a>
+                </li>
+                <li class="goods-price">
+                    ￥188.00
+                </li>
+                <li class="goods-num">
+                        <span class="reduce hide">-</span>
+                        <span class="num">1</span>
+                        <span class="add">+</span>
+                </li>
+                <li class="goods-sub">
+                    ￥188.00
+                </li>
+                <li class="close">&times;</li>
+            </ul>
+            <div class="list-line"></div>
+            <ul class="goods-list">
+
+                <li class="goods-inf">
+                    <a href="#">
+                        <span class="goods-imgs">
+                            <img src="image/order-detail3.png">
+                        </span>
+                        <span class="goods-name">致春天</span>
+                    </a>
+                </li>
+                <li class="goods-price">
+                    赠送
+                </li>
+                <li class="goods-num">
+                    <span class="reduce hide">-</span>
+                    <span class="num">同蛋糕份数</span>
+                    <span class="add hide">+</span>
+                </li>
+                <li class="goods-sub">
+                    ￥0
+                </li>
+                <li class="close">&times;</li>
+            </ul>
+            <div class="list-line"></div>
+            <ul class="goods-list">
+                <li class="goods-inf">
+                    <a href="#">
+                        <span class="goods-imgs">
+                            <img src="image/order-detail1.png">
+                        </span>
+                        <span class="goods-name">配套餐具</span>
+                    </a>
+                </li>
+                <li class="goods-price">
+                    ￥0.5
+                </li>
+                <li class="goods-num">
+                    <span class="reduce hide">-</span>
+                    <span class="num">1</span><em>人份</em>
+                    <span class="add">+</span>
+                </li>
+                <li class="goods-sub">
+                    ￥0.5
+                </li>
+                <li class="close">&times;</li>
+            </ul>
+            <div class="list-line"></div>
+            <div class="text">
+                <label style="position: relative">
+                    <i class="iconfont">&#xe62d;</i>
+                    <input type="text" placeholder="留言说明,100字以内" maxlength="100">
+                </label>
+                <div class="total">
+                    总计:<b class="goods-total">￥188.00</b>
+                    &nbsp;元
+                </div>
+            </div>
+        </div>
+        <div style="overflow: hidden;padding: 25px 0"></div>
+        <div class="list-line"></div>
+        <div class="tips">
+            <strong>送货信息</strong>
+            *为保证送货准确性，请您填写正确无误的信息。如果您之前注册购买过，请
+            <a href="#" style="text-decoration: underline">登录</a>
+            以读取地址信息，并积累积分
+        </div>
+        <div class="list-line"></div>
+        <div style="overflow: hidden;padding: 20px 0"></div>
+        <form id="message">
+            <ul>
+                <li>
+                    <p class="message-font">送货地址:</p>
+                    <label for="Province">
+                        <select id="Province">
+                            <option value="0">--省/直辖市--</option>
+                        </select>
+                        <input type="hidden" id="Province_val" name="Province_val">
+                    </label>
+                    <label for="City">
+                        <select id="City">
+                            <option value="0">--城市--</option>
+                        </select>
+                        <input type="hidden" id="City_val" name="City_val">
+                    </label>
+                    <label for="County">
+                        <select id="County">
+                            <option value="0">--区/县--</option>
+                        </select>
+                        <input type="hidden" id="County_val" name="County_val">
+                    </label>
+                    <div style="overflow: hidden;padding: 12px 0"></div>
+                    <label for="address">
+                        <input type="text" placeholder="详细地址" id="address">
+                    </label>
+                    <div style="overflow: hidden;padding: 7px 0"></div>
+                    <div class="list-line"></div>
+                </li>
+                <li>
+                    <div style="overflow: hidden;padding: 7px 0"></div>
+                    <p class="message-font">收货人姓名:</p>
+                    <label for="who">
+                        <input type="text" placeholder="收货人姓名" id="who">
+                    </label>
+                    <div style="overflow: hidden;padding: 7px 0"></div>
+                    <div class="list-line"></div>
+                </li>
+                <li>
+                    <div style="overflow: hidden;padding: 7px 0"></div>
+                    <p class="message-font">联系手机:</p>
+                    <label for="phone">
+                        <input type="text" placeholder="收货人手机号码" id="phone">
+                    </label>
+                    <div style="overflow: hidden;padding: 7px 0"></div>
+                    <div class="list-line"></div>
+                </li>
+                <li>
+                    <div style="overflow: hidden;padding: 7px 0"></div>
+                    <p class="message-font">送货时间:</p>
+                    <label for="delivery">
+                        <input type="date"  id="delivery">
+                    </label>
+                    <label for="delivery-time">
+                        <input type="time"  id="delivery-time">
+                    </label>
+                    <div style="overflow: hidden;padding: 7px 0"></div>
+                    <div class="list-line"></div>
+                </li>
+                <li>
+                    <div style="overflow: hidden;padding: 7px 0"></div>
+                    <p class="message-font">开发票:</p>
+                    <label for="invoice">
+                        <input type="checkbox"id="invoice">
+                    </label>
+                    <div style="overflow: hidden;padding: 7px 0"></div>
+                    <div class="list-line"></div>
+                </li>
+                <li>
+                    <div style="overflow: hidden;padding: 7px 0"></div>
+                    <p class="message-font">支付方式</p>
+                    <div style="overflow: hidden;padding: 7px 0"></div>
+                    <div class="list-line"></div>
+                    <div style="overflow: hidden;padding: 7px 0"></div>
+                    <label for="daofu">
+                        <input type="radio" id="daofu" name="payment">
+                    </label>
+                    <p class="payment">货到付款</p>
+                    <label for="zhifubao">
+                        <input type="radio" id="zhifubao" name="payment">
+                    </label>
+                    <p class="payment">支付宝</p>
+                    <div style="overflow: hidden;padding: 7px 0"></div>
+                    <div class="list-line"></div>
+                </li>
+            </ul>
+        </form>
+        <div class="pay-sub">
+            <div class="list-line"></div>
+            <div class="pay-size">
+                <div class="showMoney">
+                    <p>
+                        <em>商品总计:</em>
+                        <b class="goods-total">￥188.00</b>
+                    </p>
+                    <p>
+                        <em>优惠折扣:</em>
+                        <b id="discount">0</b>元
+                    </p>
+                    <p>
+                        <em>您总共需要支付：</em>
+                        <b id="youNeedToPay">￥188.00</b>
+                    </p>
+                </div>
+            </div>
+        </div>
+            <a href="#" class="payIt">提交订单</a>
+            <p style="float: right;height: 38px ;line-height: 38px;font-size: 14px;margin-right: 5px">请确认信息无误后下单</p>
+        </div>
+    <div style="overflow: hidden;padding: 80px 0"></div>
+    </div>
+    <div class="list-line"></div>
+<!---公共部分--->
+<div id="foot">
+    <footer>
+        <p class="call">
+            订购电话:
+            <b>123 456 7899</b>
+        </p>
+        <span>本页面纯粹练习所用,禁止用于商业用途</span>
+    </footer>
+</div>
+<!---公共部分--->
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/pay.js"></script>
+</body>
+</html>
