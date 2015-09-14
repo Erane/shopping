@@ -273,11 +273,29 @@ body{
     line-height: 38px;
     margin: 0 auto 10px auto;
     border-radius: 8px;
+    cursor: pointer;
 }
 .goToBuy-shopping{
     background: #e4e4e4;
     color: rgb(97, 97, 97);
     border: 1px solid #d8d7d7;
+    position: relative;
+}
+.goToBuy-shopping > span{
+    position: absolute;
+    width: 100%;
+    text-align: left;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 100%;
+    margin-left: 10px;
+    font-size: 14px;
+    display: none;
+    /*margin-bottom: 15px;*/
 }
 #show-info{
     width: 100%;

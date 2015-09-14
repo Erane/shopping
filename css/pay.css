@@ -224,7 +224,7 @@ input{
     opacity: 0;
 }
 .No-commodity{
-    padding-top: 50px;
+    padding: 50px 0;
     text-align: center;
     font-size: 15px;
 }
@@ -339,17 +339,29 @@ input{
     padding-bottom: 10px;
 }
 .showMoney{
+    /*text-align: right;*/
+}
+.showMoney p{
+    width: 100%;
     text-align: right;
 }
-.showMoney p:nth-of-type(1) b{
-    padding-left: 15px;
+.showMoney p em{
+    /*display: inline-block;*/
+    /*width: 85%;*/
 }
-.showMoney p:nth-of-type(2) b{
-    padding-left: 65px;
+.showMoney p b{
+    /*padding-left: 40px;*/
+    text-align: right;
 }
-.showMoney p:nth-of-type(3) b{
-    padding-left:4px;
-}
+/*.showMoney p:nth-of-type(1) b{*/
+    /*padding-left: 15px;*/
+/*}*/
+/*.showMoney p:nth-of-type(2) b{*/
+    /*padding-left: 65px;*/
+/*}*/
+/*.showMoney p:nth-of-type(3) b{*/
+    /*padding-left:4px;*/
+/*}*/
 .payIt{
     background: none;
     display: block;

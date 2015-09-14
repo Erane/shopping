@@ -1,8 +1,46 @@
-//    if(typeof  (sessionStorage.good) !== "undefined"){
-//        console.log(1)
-//    }
 
+
+
+
+
+
+
+
+
+//(function(){
+//    $.get("PHP/json/shopping.json", function (data) {
+//        var goodlist=JSON.parse(JSON.stringify(data));
+//        for(var i=0;i<goodlist.length;i++){
+//            $(".goods").prepend('<ul class="goods-list">'+
+//            '<li class="goods-inf">'+
+//            '<a href="#">'+
+//            '<span class="goods-imgs">'+
+//            '<img src="image/cat-little.jpg">'+
+//            '</span>'+
+//            '<span class="goods-name">'+goodlist[i].name+'</span>'+
+//            '</a>'+
+//            '</li>'+
+//            '<li class="goods-price">'+
+//            '￥'+goodlist[i].price+
+//            '</li>'+
+//            '<li class="goods-num">'+
+//            '<span class="reduce">-</span>'+
+//            '<span class="num">'+goodlist[i].sub+'</span>'+
+//            '<span class="add">+</span>'+
+//            '</li>'+
+//            '<li class="goods-sub">'+
+//            '￥'+goodlist[i].money+
+//            '</li>'+
+//            '</ul>'+
+//            '<div class="list-line"></div>')
+//        }
+//    })
+//})();
 $(function () {
+
+
+
+function letItGo(){
     $(".close").click(function(){
         if(confirm("确认删除商品吗?")){
             var self=$(this).parent();//找到点击对象的父元素
@@ -28,12 +66,16 @@ $(function () {
         goods_total.html('￥'+ price_all.toFixed(2));
         youNeedToPay.html('￥'+ (price_all - parseFloat(goods_discount)).toFixed(2))
     }
+    window.total=total();
 //如果购物车有商品,隐藏文字提示
     if($(".goods-list").length > 0){
         $(".No-commodity").addClass("hide");
+    }else{
+        $(".No-commodity").removeClass("hide");
     }
 //购物车价格计算(细节部分)
     (function(){
+
         var Sum=function(){
             this.close=$(".close");//删除商品
             this.reduce=$(".reduce");//减号
@@ -148,34 +190,103 @@ $(function () {
             County_val.val($(this).find("option:selected").text());
         })
     })();
+}
+    //letItGo();
 
-//    if(typeof sessionStorage.good !== "undefined"){
-//        var list=JSON.parse(sessionStorage.good);
-//        for(var i=0;i<list.length;i++){
-//            body.prepend('<ul class="goods-list">'+
-//            '<li class="goods-inf">'+
-//            '<a href="#">'+
-//           '<span class="goods-imgs">'+
-//            '<img src="image/cat-little.jpg">'+
-//            '</span>'+
-//            '<span class="goods-name">猫爪蛋糕</span>'+
-//            '</a>'+
-//            '</li>'+
-//            '<li class="goods-price">'+
-//            '￥188.00'+
-//            '</li>'+
-//            '<li class="goods-num">'+
-//            '<span class="reduce">-</span>'+
-//            '<span class="num">10</span>'+
-//            '<span class="add">+</span>'+
-//            '</li>'+
-//            '<li class="goods-sub">'+
-//            '￥188.00'+
-//            '</li>'+
-//            '</ul>'+
-//            '<div class="list-line"></div>')
-//        }
-//    }else{
-//        console.log(1)
-//    }
+    //if(typeof sessionStorage.goods !== "undefined"){
+    //    var goods=$(".goods");
+    //    var list=JSON.parse(sessionStorage.goods);
+    //    for(var i=0;i<list.length;i++){
+    //        goods.prepend('<ul class="goods-list">'+
+    //        '<li class="goods-inf">'+
+    //        '<a href="#">'+
+    //       '<span class="goods-imgs">'+
+    //        '<img src="image/cat-little.jpg">'+
+    //        '</span>'+
+    //        '<span class="goods-name">'+list[i].name+'</span>'+
+    //        '</a>'+
+    //        '</li>'+
+    //        '<li class="goods-price">'+
+    //        '￥'+list[i].price+
+    //        '</li>'+
+    //        '<li class="goods-num">'+
+    //        '<span class="reduce">-</span>'+
+    //        '<span class="num">'+list[i].sub+'</span>'+
+    //        '<span class="add">+</span>'+
+    //        '</li>'+
+    //        '<li class="goods-sub">'+
+    //        '￥'+list[i].money+
+    //        '</li>'+
+    //        '</ul>'+
+    //        '<div class="list-line"></div>')
+    //    }
+    //}else{
+    //    console.log(1)
+    //}
+
+    //-----------------------获取sessionStorage上购物车的内容------------------------------
+    if(typeof  (sessionStorage.goods) !== "undefined"){
+        var goodlist=JSON.parse(sessionStorage.goods);
+        for(var i=0;i<goodlist.length;i++){
+            $(".goods").prepend('<ul class="goods-list">'+
+            '<li class="goods-inf">'+
+            '<a href="#">'+
+            '<span class="goods-imgs">'+
+            '<img src="image/cat-little.jpg">'+
+            '</span>'+
+            '<span class="goods-name">'+goodlist[i].name+'</span>'+
+            '</a>'+
+            '</li>'+
+            '<li class="goods-price">'+
+            '￥'+goodlist[i].price+
+            '</li>'+
+            '<li class="goods-num">'+
+            '<span class="reduce">-</span>'+
+            '<span class="num">'+goodlist[i].sub+'</span>'+
+            '<span class="add">+</span>'+
+            '</li>'+
+            '<li class="goods-sub">'+
+            '￥'+goodlist[i].money+
+            '</li>'+
+            '</ul>'+
+            '<div class="list-line"></div>')
+        }
+    }
+
+
+    //-----------------------利用ajax获取上购物车的内容------------------------------
+    //$.get("PHP/json/shopping.json", function (data) {
+    //    var goodlist=JSON.parse(JSON.stringify(data));
+    //    for(var i=0;i<goodlist.length;i++){
+    //        $(".goods").prepend('<ul class="goods-list">'+
+    //        '<li class="goods-inf">'+
+    //        '<a href="#">'+
+    //        '<span class="goods-imgs">'+
+    //        '<img src="image/cat-little.jpg">'+
+    //        '</span>'+
+    //        '<span class="goods-name">'+goodlist[i].name+'</span>'+
+    //        '</a>'+
+    //        '</li>'+
+    //        '<li class="goods-price">'+
+    //        '￥'+goodlist[i].price+
+    //        '</li>'+
+    //        '<li class="goods-num">'+
+    //        '<span class="reduce hide">-</span>'+
+    //        '<span class="num">'+goodlist[i].sub+'</span>'+
+    //        '<span class="add">+</span>'+
+    //        '</li>'+
+    //        '<li class="goods-sub">'+
+    //        '￥'+goodlist[i].money+
+    //        '</li>'+
+    //        '</ul>'+
+    //        '<div class="list-line"></div>')
+    //    }
+    //}).done(function(){
+    //    letItGo();
+    //})
+
+
+
+    letItGo();//记得放到末尾,否则sessionStorage添加的内容无法操作
+
 });
