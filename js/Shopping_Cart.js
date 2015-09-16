@@ -13,7 +13,8 @@
     //第二个参数是约定好的,代表改商品的id值
     //第三个参数是该商品的单价
     //第四个参数是该商品的名称
-    Buy.prototype.shopping=function(ssStr_name,id,price,name){
+    //第五个参数是该商品的缩略图名称
+    Buy.prototype.shopping=function(ssStr_name,id,price,name,img){
         //判断有没有这个key值
         if(typeof (sessionStorage[ssStr_name]) === "undefined"){
             //这个其实就是对象字面量赋值
@@ -22,13 +23,14 @@
             this.context.money=parseFloat(price);//存放商品总价
             this.context.name=name;
             this.context.sub=1;//要购买商品的数量,初始值为1
+            this.context.img=img;
 
             //存放商品信息
             var goods_arr=[];
             //JSON.stringify() 把值转换为对象,json
             //JSON.parse 把值转换为字符串
             goods_arr[0]=JSON.parse(JSON.stringify(this.context));
-            console.log(goods_arr);
+
             //把商品信息以json格式存放到指定的sessionStorage内
             sessionStorage[ssStr_name]=JSON.stringify(goods_arr);
         }else{
@@ -55,6 +57,7 @@
                 this.context.money=parseFloat(price);
                 this.context.name=name;
                 this.context.sub=1;
+                this.context.img=img;
 
                 this.goodsList[this.goodsList.length]=JSON.parse(JSON.stringify(this.context));
                 sessionStorage[ssStr_name]=JSON.stringify(this.goodsList)
@@ -63,7 +66,7 @@
     };
     //利用Ajax + PHP + json存储购物信息
     //流程大致与sessionStorage相同,只是传给了PHP
-    Buy.prototype.shopping2=function(id,price,name){
+    Buy.prototype.shopping2=function(id,price,name,img){
         var context={};
         var goodlist={};
         //判断有shopping里面有没有内容,初始化是没有的
@@ -77,7 +80,7 @@
             for(var i=0;i<goodlist.length;i++){
                 if(goodlist[i].id == id){
                     goodlist[i].sub=parseInt(goodlist[i].sub)+1;
-                    goodlist[i].price=(parseFloat(goodlist[i].sub)*price).toFixed(2);
+                    goodlist[i].money=(parseFloat(goodlist[i].sub)*price).toFixed(2);
 
                     $.ajax({
                         type:"post",
@@ -97,6 +100,7 @@
                 context.sub=1;
                 context.money=parseFloat(price);
                 context.price=price;
+                context.img=img;
 
                 goodlist[goodlist.length]=JSON.parse(JSON.stringify(context));
 
@@ -115,6 +119,7 @@
             context.sub=1;
             context.money=parseFloat(price);
             context.price=price;
+            context.img=img;
 
             var goods_arr=[];
             goods_arr[0]=JSON.parse(JSON.stringify(context));
@@ -131,7 +136,7 @@
     var play=true;
     var num=1;
     $(".goToBuy-shopping").on("click",function(){
-        if(!play){
+        if(!play){//防止动画在进行时不停地点加入购物车
             return
         }
         play=false;
@@ -139,11 +144,11 @@
             play=true;
         });
 
+        //这里偷懒了,原本应该要遍历商品取得它的商品名和价格等信息的
        //sessionStorage调用
-        buy.shopping("goods",147,188,"猫爪蛋糕")
-
+        buy.shopping("goods",147,188,"猫爪蛋糕","cat-little");
         //AJax调用
-        //buy.shopping2(147,188,"猫爪蛋糕");
+        //buy.shopping2(147,188,"猫爪蛋糕","cat-little");
         num++;
     });
 })();
